@@ -6,6 +6,10 @@ const connect = function() {
     port:50541
   });
 
+  conn.on('data', (data) => {
+    console.log(data);
+  });
+
   conn.setEncoding('utf8');
 
   return conn;
