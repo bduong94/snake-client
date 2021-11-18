@@ -19,6 +19,10 @@ const connect = function() {
     conn.write('Name: B.D');
   })
 
+  // conn.on('connect', () => {
+  //   conn.write('Say: Good luck!');
+  // })
+
   return conn;
 };
 

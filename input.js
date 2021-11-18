@@ -1,7 +1,8 @@
 let connection;
+// const readline = require('readline');
+// const 
 
-const handleUserInput = function() {
-  process.stdin.on('data', (key) => {
+const handleUserInput = function(key) {
     if (key === '\u0003') {
       process.exit();
     };
@@ -18,8 +19,10 @@ const handleUserInput = function() {
     if (key === 'd') {
       connection.write('Move: right');
     }
-    // process.stdout.write(key);
-  });
+    if (key === 'l') {
+      connection.write(`Say: Hey! I'm over here!`);
+    }
+    process.stdout.write(key);
 };
 
 const setupInput = function (conn) {
