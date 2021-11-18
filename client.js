@@ -11,7 +11,7 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log(data);
   });
-
+  
   conn.on('connect', () => {
     console.log('Sucessfully connected to the game..');
   });
