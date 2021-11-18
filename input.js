@@ -1,31 +1,30 @@
 let connection;
-// const readline = require('readline');
-// const 
+let { moveUpKey, moveDownKey, moveLeftKey, moveRightKey, messages } = require('./constants');
 
 const handleUserInput = function(key) {
-    if (key === '\u0003') {
-      process.exit();
-    };
+  if (key === '\u0003') {
+    process.exit();
+  }
 
-    if (key === 'w') {
-      connection.write('Move: up');
-    }
-    if (key === 's') {
-      connection.write('Move: down');
-    }
-    if (key === 'a') {
-      connection.write('Move: left');
-    }
-    if (key === 'd') {
-      connection.write('Move: right');
-    }
-    if (key === 'l') {
-      connection.write(`Say: Hey! I'm over here!`);
-    }
-    process.stdout.write(key);
+  if (key === moveUpKey) {
+    connection.write('Move: up');
+  }
+  if (key === moveDownKey) {
+    connection.write('Move: down');
+  }
+  if (key === moveLeftKey) {
+    connection.write('Move: left');
+  }
+  if (key === moveRightKey) {
+    connection.write('Move: right');
+  }
+  if (messages[key]) {
+    connection.write(`Say: ${messages[key]}`);
+  }
+  process.stdout.write(key);
 };
 
-const setupInput = function (conn) {
+const setupInput = function(conn) {
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -37,4 +36,4 @@ const setupInput = function (conn) {
 
 module.exports = {
   setupInput
-}
+};

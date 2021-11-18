@@ -1,8 +1,9 @@
 const net = require('net');
+const { IP, PORT, playerInitials } = require('./constants');
 const connect = function() {
   const conn = net.createConnection({
-    host:'10.0.2.15',
-    port:50541
+    host:IP,
+    port:PORT
   });
   
   conn.setEncoding('utf8');
@@ -16,12 +17,8 @@ const connect = function() {
   });
 
   conn.on('connect', () => {
-    conn.write('Name: B.D');
-  })
-
-  // conn.on('connect', () => {
-  //   conn.write('Say: Good luck!');
-  // })
+    conn.write(`Name: ${playerInitials}`);
+  });
 
   return conn;
 };
